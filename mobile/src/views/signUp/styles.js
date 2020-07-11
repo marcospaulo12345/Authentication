@@ -11,12 +11,12 @@ const styles = StyleSheet.create({
         color: '#fff',
         top: 130,
         width: 200,
-        left: 35
+        left: 32
     },
     content: {
         width: '100%',
         position: 'absolute',
-        top: 300,
+        top: 285,
         alignItems: 'center'
     },
     input: {
@@ -52,13 +52,23 @@ const styles = StyleSheet.create({
         height: 30
     },
     footer: {
-        top: '22%',
+        top: '24%',
         width: '85%',
     },
     textFooter: {
         textDecorationLine: "underline",
         fontWeight: 'bold',
         color: '#fff'
+    },
+    back: {
+        position: 'absolute',
+        top: 30,
+        left: 30  
+    },
+    imageArrowLeft: {
+        ...StyleSheet.absoluteFill,
+        width: 13,
+        height: 24,      
     }
 });
 

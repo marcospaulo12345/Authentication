@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         top: 130,
         width: 200,
-        left: 40
+        left: 58
     },
     content: {
         flex: 1,
@@ -60,6 +60,16 @@ const styles = StyleSheet.create({
         textDecorationLine: "underline",
         fontWeight: 'bold'
     },
+    back: {
+        position: 'absolute',
+        top: 30,
+        left: 58  
+    },
+    imageArrowLeft: {
+        ...StyleSheet.absoluteFill,
+        width: 13,
+        height: 24,      
+    }
 });
 
 export default styles;
