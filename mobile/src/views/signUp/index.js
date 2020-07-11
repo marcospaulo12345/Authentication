@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { 
     View, 
     Text, 
@@ -6,18 +6,52 @@ import {
     TouchableOpacity, 
     Image, 
     KeyboardAvoidingView,
-    ScrollView
+    ScrollView,
+    Alert
 } from 'react-native';
 
 import Svg, {Path} from 'react-native-svg';
 
 import styles from './styles';
 
+import api from '../../services/api';
+
 //Icones
 import arrow from '../../assets/Arrow.png';
 import arrowLeft from '../../assets/ArrowLeft.png';
 
 export default function SignUp({ navigation }) {
+
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    async function createUser(){
+
+        if(!name)
+            return Alert.alert('Name is required');
+        
+        if(!email)
+            return Alert.alert('Email is required');
+        
+        if(!password)
+            return Alert.alert('Password is required');
+        
+        
+
+
+        await api.post('/auth/register', {
+            name,
+            email,
+            password
+        }).then(response => {
+            Alert.alert('Registration Complete');
+        }).catch(err => {
+            const { data } = err.response;
+            Alert.alert(data.error);
+        })
+    }
+
     return(
         <KeyboardAvoidingView style={styles.container}>
             <ScrollView style={{width: '100%'}}>
@@ -34,17 +68,23 @@ export default function SignUp({ navigation }) {
                     <TextInput 
                         style={styles.input}
                         placeholder="Name"
+                        onChangeText = {(text) => setName(text)}
+                        value={name}
                     />
                     <TextInput 
                         style={styles.input}
                         placeholder="Email"
+                        onChangeText={(text) => setEmail(text)}
+                        value={email}
                     />
                     <TextInput 
                         style={styles.input}
                         placeholder="Password"
+                        onChangeText={(text) => setPassword(text)}
+                        value={password}
                     />
 
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={createUser}>
                         <Text style={styles.textButton}>Sign Up</Text>
                         <View style={styles.circle}>
                             <Image source={arrow} style={styles.image}></Image>

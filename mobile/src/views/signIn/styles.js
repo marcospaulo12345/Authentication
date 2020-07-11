@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         top: 130,
         width: 200,
-        left: 58
+        left: 32
     },
     content: {
         flex: 1,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     back: {
         position: 'absolute',
         top: 30,
-        left: 58  
+        left: 30
     },
     imageArrowLeft: {
         ...StyleSheet.absoluteFill,
