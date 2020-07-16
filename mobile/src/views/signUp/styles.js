@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         padding: 5,
         marginVertical: 18,
         fontWeight: 'bold',
+        color: '#fff'
     },
     button: {
         width: '85%',
@@ -66,7 +67,6 @@ const styles = StyleSheet.create({
         left: 30  
     },
     imageArrowLeft: {
-        ...StyleSheet.absoluteFill,
         width: 13,
         height: 24,      
     }

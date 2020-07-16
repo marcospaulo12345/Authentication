@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
         left: 30
     },
     imageArrowLeft: {
-        ...StyleSheet.absoluteFill,
         width: 13,
         height: 24,      
     }
