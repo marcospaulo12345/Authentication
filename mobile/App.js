@@ -9,23 +9,23 @@ import Profile from './src/views/Profile';
 
 import { isSignIn } from './src/services/auth';
 
+import {AuthProvider} from './src/contexts/auth'
+import Routes from './src/routes';
 
-const Stack = createStackNavigator();
+
+//const Stack = createStackNavigator();
 
 export default function App() {
 
   const [initialRoute, setInitialRoute] = useState();
 
-  useEffect(() => {
-    isSignIn().then(res => {
-      setInitialRoute(res)
-      console.log(res)
-    })
-  }, []);
 
   return (
     <NavigationContainer>
-      <Stack.Navigator >
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
+      {/* <Stack.Navigator >
       { initialRoute ? (
           <Stack.Screen name='Profile' component={Profile} options={{ headerShown: false}}/>
         ) : (
@@ -35,7 +35,7 @@ export default function App() {
           </>
         )
         }
-      </Stack.Navigator>
+      </Stack.Navigator> */}
     </NavigationContainer>
   );
 }

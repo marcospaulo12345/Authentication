@@ -17,13 +17,14 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         alignItems: 'center',
-        paddingBottom: 80
+        position: 'absolute',
+        bottom: 0
     }, 
     input: {
         fontSize: 16,
         width: '85%',
         borderBottomWidth: 1,
-        borderBottomColor: '#AEACAA',
+        borderBottomColor: '#99948F',
         marginVertical: 18,
         fontWeight: 'bold',
         padding: 5
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: "space-between",
+        marginBottom: 80
     },
     circle: {
         width: 80,
@@ -54,7 +56,8 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingHorizontal: 30
+        paddingHorizontal: 30,
+        top: 0
     },
     textFooter: {
         textDecorationLine: "underline",
@@ -68,6 +71,12 @@ const styles = StyleSheet.create({
     imageArrowLeft: {
         width: 13,
         height: 24,      
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
     },
     password: {
         position: 'relative',

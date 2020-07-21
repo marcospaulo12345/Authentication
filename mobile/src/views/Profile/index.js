@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import {
     View,
     Image,
@@ -19,9 +19,22 @@ import { onSignOut } from '../../services/auth';
 import arrowLeft  from '../../assets/ArrowLeft.png';
 import UserPhoto from '../../assets/userPhoto.png';
 
-
+import AuthContext, { AuthProvider } from '../../contexts/auth';
+import { useSafeArea } from 'react-native-safe-area-context';
 
 export default function Profile({ navigation }){ 
+    const {user, signOut, updateUser } = useContext(AuthContext);
+    const [name, setName] = useState(user?.name);
+    const [email, setEmail] = useState(user?.email);
+
+
+    function handleSignout(){
+        signOut();
+    }
+
+    function changeUser(){
+        updateUser({userId: user._id, name, email});
+    }
 
     return (
         <KeyboardAvoidingView style={styles.container}>
@@ -31,11 +44,8 @@ export default function Profile({ navigation }){
                     <Path d="M324.79 -30.45C388.628 -47.762 436.777 20.404 423.793 83.701C411.35 147.539 338.315 207.049 292.33 252.493C245.804 297.396 227.41 329.315 200.36 395.317C172.769 460.778 137.063 561.404 83.5041 586.29C29.4041 611.176 -42.5489 560.322 -48.4999 487.828C-54.9919 414.793 4.51806 320.118 -9.00694 254.657C-22.5319 189.196 -12.118 149.214 -25.643 120C-39.168 90.786 -48.5 62.201 -48.5 6C3.63607 -8 -30.653 14.591 28.857 -13C88.367 -40.591 260.952 -12.597 324.79 -30.45Z" fill="#494E58"/>
                 </Svg>
 
-                <TouchableOpacity style={styles.back} onPress={() => onSignOut().then(navigation.navigate('SignIn'))}>
-                    <Image source={arrowLeft} style={styles.imageArrowLeft} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={logout}>
-                    <Text>Sair</Text>
+                <TouchableOpacity style={styles.exit} onPress={handleSignout}>
+                    <Text style={styles.textExit}>Sair</Text>
                 </TouchableOpacity>
                 <View style={styles.content}>
                     <Image source={UserPhoto} style={styles.userPhoto}/>
@@ -45,27 +55,30 @@ export default function Profile({ navigation }){
                         <TextInput 
                             style={styles.input}
                             placeholder='Name'
+                            onChangeText={(text) => setName(text)}
+                            value={name}
                         />
 
                         <TextInput 
                             style={styles.input}
                             placeholder='Email'
+                            onChangeText={(text) => setEmail(text)}
+                            value={email}
                         />
-
-                        <TextInput 
-                            style={styles.input}
-                            placeholder='Password'
-                            secureTextEntry={true}
-                        />
-                    </View>
 
                     <View style={styles.buttons}>
-                        <TouchableOpacity style={styles.buttonUpdate}>
-                            <Text style={styles.textButton}>Update</Text>
+                        <TouchableOpacity style={styles.buttonUpdate} onPress={changeUser}>
+                            <Text style={styles.textButton}>Save Changes</Text>
                         </TouchableOpacity>
+                    </View>
 
-                        <TouchableOpacity style={styles.buttonDelete}>
-                            <Text style={styles.textButton}>Delete</Text>
+                    </View>
+
+                    
+
+                    <View style={styles.footer}>
+                        <TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
+                            <Text style={styles.textFooter}>Change Password</Text>
                         </TouchableOpacity>
                     </View>
 

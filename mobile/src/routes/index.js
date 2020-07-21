@@ -8,5 +8,8 @@ import AuthContext from '../contexts/auth';
 const Routes = () => {
     const {signed, loading} = useContext(AuthContext);
 
+
     return signed ? <AppRoutes/> : <AuthRoutes />;
 }
+
+export default Routes;

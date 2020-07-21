@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { 
     View, 
     Text, 
@@ -16,15 +16,22 @@ import styles from './styles';
 
 import api from '../../services/api';
 
+import AuthContext from '../../contexts/auth';
+
 //Icones
 import arrow from '../../assets/Arrow.png';
 import arrowLeft from '../../assets/ArrowLeft.png';
+import ocultar from '../../assets/ocultar.png';
+import mostrar from '../../assets/mostrar.png';
 
 export default function SignUp({ navigation }) {
+
+    const { signed, signUp } = useContext(AuthContext);
 
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [hidePassword, setHidePassword] = useState(true);
 
     async function createUser(){
 
@@ -37,19 +44,8 @@ export default function SignUp({ navigation }) {
         if(!password)
             return Alert.alert('Password is required');
         
+        signUp({name, email, password});
         
-
-
-        await api.post('/auth/register', {
-            name,
-            email,
-            password
-        }).then(response => {
-            Alert.alert('Registration Complete');
-        }).catch(err => {
-            const { data } = err.response;
-            Alert.alert(data.error);
-        })
     }
 
     return(
@@ -78,14 +74,25 @@ export default function SignUp({ navigation }) {
                         onChangeText={(text) => setEmail(text)}
                         value={email}
                     />
-                    <TextInput 
-                        style={styles.input}
-                        placeholder="Password"
-                        placeholderTextColor="#fff"
-                        onChangeText={(text) => setPassword(text)}
-                        secureTextEntry={true}
-                        value={password}
-                    />
+                    <View style={styles.password}>
+                        <TextInput 
+                            style={styles.input}
+                            placeholder="Password"
+                            placeholderTextColor="#fff"
+                            onChangeText={(text) => setPassword(text)}
+                            secureTextEntry={hidePassword}
+                            value={password}
+                        />
+                        <TouchableOpacity onPress={() => setHidePassword(!hidePassword)}>
+                            {
+                                hidePassword ?
+                                <Image source={mostrar} style={styles.iconPassword}/>
+                                :
+                                <Image source={ocultar} style={styles.iconPassword}/>
+                            }
+
+                        </TouchableOpacity>
+                    </View>
 
                     <TouchableOpacity style={styles.button} onPress={createUser}>
                         <Text style={styles.textButton}>Sign Up</Text>

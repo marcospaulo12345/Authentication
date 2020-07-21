@@ -69,6 +69,17 @@ const styles = StyleSheet.create({
     imageArrowLeft: {
         width: 13,
         height: 24,      
+    },
+    password: {
+        position: 'relative',
+        width: '85%',
+        flexDirection: 'row'
+    },  
+    iconPassword: {
+        width: 28,
+        height: 28,
+        marginVertical: 20,
+        marginLeft: 10
     }
 });
 

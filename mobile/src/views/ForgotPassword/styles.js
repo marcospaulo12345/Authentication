@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         alignItems: 'center',
-        paddingBottom: 80
+        position: 'absolute',
+        bottom: 0
     }, 
     input: {
         fontSize: 16,
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: "space-between",
+        marginBottom: 80
     },
     circle: {
         width: 80,
@@ -54,7 +56,8 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingHorizontal: 30
+        paddingHorizontal: 30,
+        top: 0
     },
     textFooter: {
         textDecorationLine: "underline",
@@ -69,16 +72,37 @@ const styles = StyleSheet.create({
         width: 13,
         height: 24,      
     },
-    password: {
-        position: 'relative',
-        width: '85%',
-        flexDirection: 'row'
-    },  
-    iconPassword: {
-        width: 28,
-        height: 28,
-        marginVertical: 20,
-        marginLeft: 10
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5
+    },
+    modalInput: {
+        marginBottom: 15,
+        
+    },
+    modalButtons: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    buttonModal: {
+        marginHorizontal: 10
     }
 });
 

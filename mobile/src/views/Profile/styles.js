@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     },
     boxInput: {
         width: '80%',
-        height: 220,
+        height: 240,
         top: 10,
         backgroundColor: '#fff',
         padding: 20,
@@ -43,14 +43,14 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#AEACAA',
         padding: 5,
-        marginVertical: 6,
+        marginVertical: 10,
         fontWeight: 'bold'        
     },
     buttons: {
-        width: '80%',
+        width: '100%',
         top: 50,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'flex-end'
     },
     buttonUpdate: {
         backgroundColor: '#494E58',
@@ -76,7 +76,24 @@ const styles = StyleSheet.create({
     imageArrowLeft: {
         width: 13,
         height: 24,      
-    }
+    },
+    exit: {
+        position: 'absolute',
+        top: 30,
+        right: 30
+    },
+    textExit: {
+        color: '#fff',
+        fontSize: 16
+    },
+    footer: {
+        top: '22%',
+        width: '80%',
+    },
+    textFooter: {
+        textDecorationLine: "underline",
+        fontWeight: 'bold',
+    },
 });
 
 export default styles;
